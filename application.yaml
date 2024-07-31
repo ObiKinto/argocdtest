@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus-stack
+  namespace: argocd-namespace  # This should be the namespace where ArgoCD is installed
+spec:
+  project: default
+  source:
+    repoURL: https://prometheus-community.github.io/helm-charts
+    chart: kube-prometheus-stack
+    targetRevision: 61.3.2  # Use the appropriate version of the chart
+    helm:
+      releaseName: prometheus-stack
+      values: |
+        # Add your custom values here, e.g.,
+        prometheus:
+          prometheusSpec:
+            retention: 10d
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd-namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
