@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://artifacthub.io/packages/helm/bitnami/postgresql
+    repoURL: https://charts.bitnami.com/bitnami
     chart: postgresql
     targetRevision: 15.5.20
   destination:
@@ -16,3 +16,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
