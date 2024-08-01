@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://charts.bitnami.com/bitnami
+    repoURL: https://artifacthub.io/packages/helm/bitnami
     chart: postgresql
-    targetRevision: 11.3.5
+    targetRevision: 15.5.20
   destination:
     server: https://kubernetes.default.svc
     namespace: postgresql
